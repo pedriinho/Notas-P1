@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="centralized-div">
+    {{error}}
+
+    <form method="POST" id="classroom-form">
+        {% csrf_token %}
+        <div class="inputs" id="name-input">
+            <label for="name">Nome da Turma:</label>
+            <input type="text" name="name" value="{{classroom.name}}">
+        </div>
+        <div class="inputs">
+            <div id="ids-ab1">
+                <label for="id_test1">Prova 1:</label>
+                <input type="text" name="id_test1" value="{{classroom.id_test1}}">
+                <label for="id_list1">Lista 1:</label>
+                <input type="text" name="id_list1" value="{{classroom.id_list1}}">
+                <label for="id_list2">Lista 2:</label>
+                <input type="text" name="id_list2" value="{{classroom.id_list2}}">
+                <label for="id_test2">Prova 2:</label>
+                <input type="text" name="id_test2" value="{{classroom.id_test2}}">
+                <label for="id_list3">Lista 3:</label>
+                <input type="text" name="id_list3" value="{{classroom.id_list3}}">
+                <label for="id_list4">Lista 4:</label>
+                <input type="text" name="id_list4" value="{{classroom.id_list4}}">
+            </div>
+            <div id="ids-ab2">
+                <label for="id_test3">Prova 3:</label>
+                <input type="text" name="id_test3" value="{{classroom.id_test3}}">
+                <label for="id_list5">Lista 5:</label>
+                <input type="text" name="id_list5" value="{{classroom.id_list5}}">
+                <label for="id_list6">Lista 6:</label>
+                <input type="text" name="id_list6" value="{{classroom.id_list6}}">
+                <label for="id_test4">Prova 4:</label>
+                <input type="text" name="id_test4" value="{{classroom.id_test4}}">
+                <label for="id_list7">Lista 7:</label>
+                <input type="text" name="id_list7" value="{{classroom.id_list7}}">
+                <label for="id_list8">Lista 8:</label>
+                <input type="text" name="id_list8" value="{{classroom.id_list8}}">
+            </div>
+            <div id="ids-reavaliation">
+                <label for="id_reav">Reav:</label>
+                <input type="text" name="id_reav" value="{{classroom.id_reav}}">
+                <label for="id_final">Final:</label>
+                <input type="text" name="id_final" value="{{classroom.id_final}}">
+            </div>
+            <button type="submit" class="add-classroom-button">Editar Turma</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
