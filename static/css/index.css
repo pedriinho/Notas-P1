@@ -55,8 +55,9 @@ a, a[href], button {
 
 }
 
+
 .centralized-div {
-    width: fit-content;
+    width: 20%;
     height: auto;
     background-color: var(--bg-secondary);
     color: var(--text-color);
@@ -67,6 +68,10 @@ a, a[href], button {
     border-radius: 5px;
     padding: 20px 10px;
     margin: 20px;
+}
+
+.create {
+    width: fit-content;
 }
 
 .icon-add{
