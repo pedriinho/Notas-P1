@@ -2,35 +2,41 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div class="content">
     <div id="classrooms" class="centralized-div">
         {% for classroom in classrooms %}
-            <div class="classroom">
-                <a href="{% url 'classroom' name=classroom %}">
-                    <button class="semi-button">
-                        {{classroom}}
-                    </button>
-                </a>
-                {% if user.is_superuser %}
-                <div id="edit-classroom" class="edit-classroom">
-                    <a href="{% url 'edit_classroom' name=classroom %}">
-                        <img src="{% static 'util/img/editar.png' %}" class="icon-edit" alt="Editar turma">
-                    </a>
-                </div>
-                <div id="del-classroom" class="del-classroom">
-                    <a href="{% url 'delete_classroom' name=classroom %}" onclick="confirmDeleteClassroom(event)" >
-                        <img src="{% static 'util/img/lixo.png' %}" class="icon-del" alt="Excluir turma">
-                    </a>
-                </div>
-                {% endif %}
-            </div>
-        {% endfor %}
-        {% if user.is_superuser %}
-            <a href="{% url 'create_classroom' %}">
-                <button class="add-classroom-button" type="submit" id="add-redirect">
-                    <p>Adicionar Turma</p>
-                    <img src="{% static 'util/img/mais.png' %}" class="icon-add">
+        <div class="classroom">
+            <a href="{% url 'classroom-individual' name=classroom %}">
+                <button class="semi-button">
+                    {{classroom}}
                 </button>
             </a>
+            {% if user.is_superuser %}
+            <div id="edit-classroom" class="edit-classroom">
+                <a href="{% url 'edit_classroom' name=classroom %}">
+                    <img src="{% static 'util/img/editar.png' %}" class="icon-edit" alt="Editar turma">
+                </a>
+            </div>
+            <div id="del-classroom" class="del-classroom">
+                <a href="{% url 'delete_classroom' name=classroom %}" onclick="confirmDeleteClassroom(event)">
+                    <img src="{% static 'util/img/lixo.png' %}" class="icon-del" alt="Excluir turma">
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% if user.is_superuser %}
+        <a href="{% url 'create_classroom' %}">
+            <button class="add-classroom-button" type="submit" id="add-redirect">
+                <p>Adicionar Turma</p>
+                <img src="{% static 'util/img/mais.png' %}" class="icon-add">
+            </button>
+        </a>
         {% endif %}
     </div>
+</div>
+
+
 {% endblock %}

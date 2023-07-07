@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+    --bg-primary: #0b0c10;
+    --text-color: #c5c6c7;
+    --bg-secondary: #1f2833;
+    --accent-primary: #66fcf1;
+    --accent-secondary: #45a29e;
+    --bg-deactive: #3ab33c;
+    --bg-active: #a91d1d;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    /* font-weight: bold; */
+    color: var(--text-color);
+}
+
+.background-table {
+    background-color: var(--bg-primary);
+}
+
+.navbar-color {
+    background-color: var(--bg-secondary);
+}
+
+a, a[href], button {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    display: inline;
+}
+
+.ativar-thread-button {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: var(--bg-deactive);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.desativar-thread-button {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: var(--bg-active);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.icon-state-thread {
+    width: 20px;
+    padding-left: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+.header-color {
+    background-color: var(--bg-secondary);
+}
+
+thead>tr>th {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-secondary);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 10px;
+    width: 8px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}

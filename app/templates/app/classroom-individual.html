@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/classroom.css' %}">
+<nav class="navbar navbar-color navbar-dark">
+    <a href="{% url 'index' %}" class="navbar-brand" style="color: white;">Programação 1</a>
+    <span style="color: aliceblue;">{{registro}}</span>
+    <form action="" method="POST" class="form-inline my-2 my-lg-0">
+        {% csrf_token %}
+        <select id="select" class="form-control mr-sm-2" name="select">
+            <option id="nome" class="selected" value="nome">Nome</option>
+            <option id="turma" value="turma">Turma</option>
+        </select>
+        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar nome..." name="search"
+            aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+    {% if user.is_superuser %}
+    {% if thread == 'deactive' %}
+    <a href="{% url 'thread' name=nameClassroom %}">
+        <button class="ativar-thread-button">
+            <p>Ativar Thread</p>
+            <img src="{% static 'util/img/play.png' %}" class="icon-state-thread"
+                alt="ativar a thread de atualizar notas">
+        </button>
+    </a>
+    {% else %}
+    <a href="{% url 'thread' name=nameClassroom%}">
+        <button class="desativar-thread-button">
+            <p>Desativar Thread</p>
+            <img src="{% static 'util/img/stop.png' %}" class="icon-state-thread"
+                alt="desativar a thread de atualizar notas">
+        </button>
+    </a>
+    {% endif %}
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'classroom-individual' name=nameClassroom %}">Notas individuais</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'classroom-computed' name=nameClassroom %}">Notas Gerais</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+<div class="background-table">
+    <table class="table ">
+        <thead class="header-color">
+            <tr>
+                {% for header in headers %}
+                <th class="center" scope="col">{{header}}</th>
+                {% endfor%}
+            </tr>
+        </thead>
+        <tbody>
+            {%for student in students%}
+            <tr>
+                <td class="">{{student.name}}</td>
+                <td class="center">{{student.course}}</td>
+                <td class="center">{{student.test1}}</td>
+                <td class="center">{{student.list1}}/12</td>
+                <td class="center">{{student.list2}}/23</td>
+                <td class="center">{{student.test2}}</td>
+                <td class="center">{{student.list3}}/10</td>
+                <td class="center">{{student.list4}}/14</td>
+                <td class="center">{{student.test3}}</td>
+                <td class="center">{{student.list5}}/29</td>
+                <td class="center">{{student.list6}}/11</td>
+                <td class="center">{{student.test4}}</td>
+                <td class="center">{{student.list7}}/12</td>
+                <td class="center">{{student.list8}}/14</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

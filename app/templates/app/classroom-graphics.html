@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/classroom.css' %}">
+<nav class="navbar navbar-color navbar-dark">
+    <a href="{% url 'index' %}" class="navbar-brand" style="color: white;">Programação 1</a>
+    <span style="color: aliceblue;">{{registro}}</span>
+    {% if user.is_superuser %}
+    {% if thread == 'deactive' %}
+    <a href="{% url 'thread' name=nameClassroom %}">
+        <button class="ativar-thread-button">
+            <p>Ativar Thread</p>
+            <img src="{% static 'util/img/play.png' %}" class="icon-state-thread"
+                alt="ativar a thread de atualizar notas">
+        </button>
+    </a>
+    {% else %}
+    <a href="{% url 'thread' name=nameClassroom%}">
+        <button class="desativar-thread-button">
+            <p>Desativar Thread</p>
+            <img src="{% static 'util/img/stop.png' %}" class="icon-state-thread"
+                alt="desativar a thread de atualizar notas">
+        </button>
+    </a>
+    {% endif %}
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'classroom-individual' name=nameClassroom %}">Notas individuais</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Notas Gerais</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'classroom-graphics' name=nameClassroom %}">Desempenho da turma</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+<div class="content">
+    <div class="graph-situation">
+        <img src="data:image/png;base64,{{ graph_situation }}" alt="Gráfico de aprovação">
+    </div>
+</div>
+{% endblock %}
